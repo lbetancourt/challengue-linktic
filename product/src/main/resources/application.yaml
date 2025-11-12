@@ -1,0 +1,19 @@
+feign:
+  client:
+    config:
+      default:
+        maxAttempts: 5
+spring:
+  application:
+    name: product
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${POSTGRES_DATASOURCE_URL:jdbc:postgresql://localhost:5432/linktic?ApplicationName=linktic-product}
+    username: ${POSTGRES_DB_USERNAME:postgres}
+    password: ${POSTGRES_DB_PASSWORD:postgres}
+    hikari:
+      pool-name: linktic-product
+      max-lifetime: 30000
+      maximum-pool-size: 2
+stock:
+  url: http://localhost:9090

@@ -1,0 +1,17 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: stock
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${POSTGRES_DATASOURCE_URL:jdbc:postgresql://localhost:5432/linktic?ApplicationName=linktic-stock}
+    username: ${POSTGRES_DB_USERNAME:postgres}
+    password: ${POSTGRES_DB_PASSWORD:postgres}
+    hikari:
+      pool-name: linktic-stock
+      max-lifetime: 30000
+      maximum-pool-size: 2
+
+product:
+  url: http://localhost:8080

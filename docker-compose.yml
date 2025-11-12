@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:10-alpine
+    container_name: 'postgres-server'
+    environment:
+      POSTGRES_DB: linktic
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    networks:
+      - linktic-network
+  pgadmin-client:
+    image: dpage/pgadmin4
+    container_name: 'pgadmin-client'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin_linktic
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - '65432:80'
+    volumes:
+      - pgadmin-linktic-data:/var/lib/pgadmin
+    networks:
+      - linktic-network
+volumes:
+  pgadmin-linktic-data:
+networks:
+  linktic-network:
+    driver: bridge
