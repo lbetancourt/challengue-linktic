@@ -58,6 +58,6 @@ public class StockUseCase implements StockProcess {
 
     @Override
     public void delete(Integer productId) {
-
+        stockRepository.delete(productId);
     }
 }
