@@ -16,4 +16,4 @@ spring:
       max-lifetime: 30000
       maximum-pool-size: 2
 stock:
-  url: http://localhost:9090
+  url: ${STOCK_SERVICE:http://localhost:9090}

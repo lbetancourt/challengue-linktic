@@ -23,6 +23,39 @@ services:
       - pgadmin-linktic-data:/var/lib/pgadmin
     networks:
       - linktic-network
+  product-service:
+    build:
+      context: ./product
+      dockerfile: Dockerfile
+    container_name: 'product-service'
+    environment:
+      POSTGRES_DATASOURCE_URL: jdbc:postgresql://postgres-server:5432/linktic
+      POSTGRES_DB_USERNAME: postgres
+      POSTGRES_DB_PASSWORD: postgres
+      STOCK_SERVICE: http://stock-service:9090
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres
+    networks:
+      - linktic-network
+  stock-service:
+    build:
+      context: ./stock
+      dockerfile: Dockerfile
+    container_name: 'stock-service'
+    environment:
+      POSTGRES_DATASOURCE_URL: jdbc:postgresql://postgres-server:5432/linktic
+      POSTGRES_DB_USERNAME: postgres
+      POSTGRES_DB_PASSWORD: postgres
+      PRODUCT_SERVICE: http://product-service:8080
+    ports:
+      - '9090:9090'
+    depends_on:
+      - postgres
+      - product-service
+    networks:
+      - linktic-network
 volumes:
   pgadmin-linktic-data:
 networks:

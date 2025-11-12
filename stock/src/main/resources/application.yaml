@@ -14,4 +14,4 @@ spring:
       maximum-pool-size: 2
 
 product:
-  url: http://localhost:8080
+  url: ${PRODUCT_SERVICE:http://localhost:8080}
