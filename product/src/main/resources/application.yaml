@@ -1,3 +1,6 @@
+api:
+  key:
+    secret: ${X_API_KEY:f72f7c71-6b82-4de1-b7a6-990970f34495}
 feign:
   client:
     config:
@@ -15,5 +18,17 @@ spring:
       pool-name: linktic-product
       max-lifetime: 30000
       maximum-pool-size: 2
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  paths-to-match: /**
+  packages-to-scan: com.linktic.product.infrastructure.controller
+  show-actuator: true
+  swagger-ui:
+    operations-sorter: alpha
+    disable-swagger-default-url: true
+    path: /swagger-ui.html
 stock:
   url: ${STOCK_SERVICE:http://localhost:9090}
+  api-key: ${X_API_KEY_STOCK:25adb200-6c1b-49ce-a3a7-87ee21ee2ac7}

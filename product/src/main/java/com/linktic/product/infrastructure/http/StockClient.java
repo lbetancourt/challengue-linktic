@@ -2,7 +2,6 @@ package com.linktic.product.infrastructure.http;
 
 import com.linktic.product.infrastructure.http.dto.StockRequestDto;
 import com.linktic.product.infrastructure.http.dto.StockResponseDto;
-import com.linktic.product.shared.FeignClientConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,6 +1,8 @@
-package com.linktic.product.shared;
+package com.linktic.stock.infrastructure.http;
 
+import feign.RequestInterceptor;
 import feign.Retryer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,7 +10,15 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class FeignClientConfig {
-    // Define la política de reintentos
+
+    @Value("${product.api-key}")
+    private String secretApiKey;
+
+    @Bean
+    public RequestInterceptor apiKeyInterceptor() {
+        return new ApiKeyRequestInterceptor(secretApiKey);
+    }
+
     @Bean
     public Retryer feignRetryer() {
         return new Retryer.Default(

@@ -1,3 +1,6 @@
+api:
+  key:
+    secret: ${X_API_KEY:25adb200-6c1b-49ce-a3a7-87ee21ee2ac7}
 server:
   port: 9090
 spring:
@@ -15,3 +18,4 @@ spring:
 
 product:
   url: ${PRODUCT_SERVICE:http://localhost:8080}
+  api-key: ${X_API_KEY_PRODUCT:f72f7c71-6b82-4de1-b7a6-990970f34495}

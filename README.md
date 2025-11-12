@@ -33,3 +33,6 @@ clean volume
 ```console
 docker volume rm challengue..
 ```
+
+## Diagram
+![Diagram](diagrama.drawio.png)

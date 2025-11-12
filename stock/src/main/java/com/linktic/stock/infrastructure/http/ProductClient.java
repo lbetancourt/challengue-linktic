@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(value = "productClient", url = "${product.url}")
+@FeignClient(value = "productClient", url = "${product.url}", configuration = FeignClientConfig.class)
 public interface ProductClient {
     @RequestMapping(method = RequestMethod.GET, value = "/api/product/{id}", produces = "application/json")
     ProductResponseDto getProductById(@PathVariable("id") Integer id);
